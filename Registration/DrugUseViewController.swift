@@ -71,6 +71,7 @@ class DrugUseViewController: UIViewController, UITextFieldDelegate {
         self.yesButton.isHidden = true
         self.noButton.isHidden = true
         self.continueButton.isHidden = false
+        print()
     }
     
     
