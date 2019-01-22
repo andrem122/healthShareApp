@@ -896,31 +896,25 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kub-m1-70I">
-                                                    <rect key="frame" x="372" y="10" width="22" height="22"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="22" id="Ptu-ys-FLF"/>
-                                                    </constraints>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="efP-Ye-jwc">
+                                                    <rect key="frame" x="359.33333333333331" y="12" width="34.666666666666686" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kub-m1-70I">
+                                                    <rect key="frame" x="20" y="12" width="319.33333333333331" height="22"/>
                                                     <state key="normal" title="Button" image="checkBoxOUTLINE"/>
                                                     <connections>
                                                         <action selector="checkBoxTapped:" destination="NpI-YH-uTK" eventType="touchUpInside" id="Y8R-ZU-u8n"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="efP-Ye-jwc">
-                                                    <rect key="frame" x="20" y="12" width="342" height="22"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Kub-m1-70I" firstAttribute="height" secondItem="efP-Ye-jwc" secondAttribute="height" id="3cf-IV-Zdw"/>
-                                                <constraint firstItem="Kub-m1-70I" firstAttribute="leading" secondItem="efP-Ye-jwc" secondAttribute="trailing" constant="10" id="56m-3b-gFy"/>
-                                                <constraint firstItem="efP-Ye-jwc" firstAttribute="top" secondItem="zph-PT-9ax" secondAttribute="top" constant="12" id="7ry-dA-ObN"/>
-                                                <constraint firstItem="Kub-m1-70I" firstAttribute="leading" secondItem="efP-Ye-jwc" secondAttribute="trailing" constant="10" id="8wz-Vc-xIB"/>
-                                                <constraint firstAttribute="trailing" secondItem="Kub-m1-70I" secondAttribute="trailing" constant="20" id="g1u-sC-7TP"/>
-                                                <constraint firstItem="Kub-m1-70I" firstAttribute="top" secondItem="zph-PT-9ax" secondAttribute="top" constant="10" id="nff-6k-KLl"/>
-                                                <constraint firstItem="efP-Ye-jwc" firstAttribute="leading" secondItem="zph-PT-9ax" secondAttribute="leading" constant="20" id="uGu-wB-3Qh"/>
+                                                <constraint firstAttribute="trailing" secondItem="efP-Ye-jwc" secondAttribute="trailing" constant="20" id="9i8-76-Rwh"/>
+                                                <constraint firstItem="efP-Ye-jwc" firstAttribute="top" secondItem="zph-PT-9ax" secondAttribute="top" constant="12" id="nvX-QI-mzg"/>
+                                                <constraint firstItem="efP-Ye-jwc" firstAttribute="leading" secondItem="Kub-m1-70I" secondAttribute="trailing" constant="20" id="rFX-Gt-YNZ"/>
+                                                <constraint firstItem="Kub-m1-70I" firstAttribute="leading" secondItem="zph-PT-9ax" secondAttribute="leading" constant="20" id="ypT-vN-2Ra"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
