@@ -37,13 +37,13 @@ class GetToKnowYouViewController: UIViewController {
     var userInfo = [String: String]()
     
     // MARK: - Navigation
-    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         // Send user info to next view
-        let registerSocialSecurityVC = segue.destination as! RegisterSSNViewController
-        registerSocialSecurityVC.userInfo = self.userInfo
+        let drugUseVC = segue.destination as! DrugUseViewController
+        drugUseVC.userInfo = self.userInfo
         
-    }*/
+    }
     
 }
 

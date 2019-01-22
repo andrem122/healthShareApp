@@ -34,7 +34,7 @@ class RegisterAddressViewController: UIViewController, UITextFieldDelegate {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         // Print user info
-        for (value, key) in self.userInfo {
+        for (key, value) in self.userInfo {
             print(key + ": " + value)
         }
         

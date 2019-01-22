@@ -40,6 +40,7 @@ class DrugUseViewController: UIViewController, UITextFieldDelegate {
     }
     
     // MARK: Properties
+    @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var yesButton: UIButton!
     @IBOutlet weak var noButton: UIButton!
     @IBOutlet weak var continueButton: UIButton!
@@ -71,7 +72,10 @@ class DrugUseViewController: UIViewController, UITextFieldDelegate {
         self.yesButton.isHidden = true
         self.noButton.isHidden = true
         self.continueButton.isHidden = false
-        print()
+        
+        questionLabel.text = "Please press the button to continue."
+        print(self.userInfo)
+        
     }
     
     
@@ -79,8 +83,8 @@ class DrugUseViewController: UIViewController, UITextFieldDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         // Send user info to next view
-        let getToKnowYouVC = segue.destination as! GetToKnowYouViewController
-        getToKnowYouVC.userInfo = self.userInfo
+        let medicalConditionsVC = segue.destination as! MedicalConditionsViewController
+        medicalConditionsVC.userInfo = self.userInfo
         
     }
     
