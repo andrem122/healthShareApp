@@ -8,13 +8,7 @@
 
 import UIKit
 
-class GetToKnowYouViewController: UIViewController {
-    
-    func setupButtons() {
-        // Make 'continue' button round
-        self.continueButton.layer.cornerRadius = 5
-        self.continueButton.clipsToBounds = true
-    }
+class SelectPaymentViewController: UIViewController {
     
     func setupNavigation() {
         // Remove border of navigation bar
@@ -27,7 +21,6 @@ class GetToKnowYouViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupButtons()
         setupNavigation()
         
         for (key, value) in self.userInfo {
@@ -37,7 +30,6 @@ class GetToKnowYouViewController: UIViewController {
     }
     
     // MARK: Properties
-    @IBOutlet weak var continueButton: UIButton!
     var userInfo = [String: String]()
     
     // MARK: - Navigation

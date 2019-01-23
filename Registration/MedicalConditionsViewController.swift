@@ -51,22 +51,30 @@ class MedicalConditionsViewController: UIViewController, UITableViewDelegate, UI
         MedicalCondition(condition: medicalConditionNames.Achondroplasia.rawValue),
         MedicalCondition(condition: medicalConditionNames.AIDS.rawValue),
         MedicalCondition(condition: medicalConditionNames.ARDS.rawValue),
+        MedicalCondition(condition: medicalConditionNames.Arthritis.rawValue),
         MedicalCondition(condition: medicalConditionNames.Alzheimer.rawValue),
         MedicalCondition(condition: medicalConditionNames.BrainTumor.rawValue),
+        MedicalCondition(condition: medicalConditionNames.Cancer.rawValue),
+        MedicalCondition(condition: medicalConditionNames.Diabetes.rawValue),
+        MedicalCondition(condition: medicalConditionNames.HeartDisease.rawValue),
         MedicalCondition(condition: medicalConditionNames.Hypertension.rawValue),
         MedicalCondition(condition: medicalConditionNames.Melanoma.rawValue),
-        MedicalCondition(condition: medicalConditionNames.HeartDisease.rawValue),
+        MedicalCondition(condition: medicalConditionNames.Obesity.rawValue),
     ]
     
     enum medicalConditionNames: String {
         case Achondroplasia = "Achondroplasia"
         case AIDS = "Acquired Immune Deficiency Syndrome (AIDS)"
         case ARDS = "Acute Respiratory Distress Syndrome (ARDS)"
+        case Arthritis = "Arthritis"
         case Alzheimer = "Alzheimer’s Disease"
         case BrainTumor = "Brain Tumors"
+        case Cancer = "Cancer"
+        case Diabetes = "Diabetes"
+        case HeartDisease = "Heart Disease"
         case Hypertension = "Hypertension"
         case Melanoma = "Melanoma"
-        case HeartDisease = "Heart Disease"
+        case Obesity = "Obesity"
     }
     
     //MARK: Actions
@@ -94,6 +102,7 @@ class MedicalConditionsViewController: UIViewController, UITableViewDelegate, UI
         return medicalConditionCell
     }
     
+    // This function is called when a row in the table view is tapped on or selected
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let medicalConditionCell = tableView.dequeueReusableCell(withIdentifier: "medicalConditionCell", for: indexPath) as! MedicalConditionCell
         
@@ -121,8 +130,8 @@ class MedicalConditionsViewController: UIViewController, UITableViewDelegate, UI
         self.userInfo["medicalConditions"] = selectedMedicalConditionsString
         
         // Send user info to next view
-        let getToKnowYouVC = segue.destination as! GetToKnowYouViewController
-        getToKnowYouVC.userInfo = self.userInfo
+        let selectPaymentTypeVC = segue.destination as! GetToKnowYouViewController
+        selectPaymentTypeVC.userInfo = self.userInfo
         
     }
     
