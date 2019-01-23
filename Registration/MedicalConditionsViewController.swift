@@ -42,11 +42,12 @@ class MedicalConditionsViewController: UIViewController, UITableViewDelegate, UI
     }
     
     // MARK: Properties
+    @IBOutlet weak var medicalConditionsTable: UITableView!
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var continueButton: UIButton!
     var userInfo = [String: String]()
     lazy var alert: Alert = Alert(currentViewController: self)
-    var medicalConditions: [MedicalCondition] = [
+    let medicalConditions: [MedicalCondition] = [
         MedicalCondition(condition: medicalConditionNames.Achondroplasia.rawValue),
         MedicalCondition(condition: medicalConditionNames.AIDS.rawValue),
         MedicalCondition(condition: medicalConditionNames.ARDS.rawValue),
@@ -54,6 +55,7 @@ class MedicalConditionsViewController: UIViewController, UITableViewDelegate, UI
         MedicalCondition(condition: medicalConditionNames.BrainTumor.rawValue),
         MedicalCondition(condition: medicalConditionNames.Hypertension.rawValue),
         MedicalCondition(condition: medicalConditionNames.Melanoma.rawValue),
+        MedicalCondition(condition: medicalConditionNames.HeartDisease.rawValue),
     ]
     
     enum medicalConditionNames: String {
@@ -64,7 +66,11 @@ class MedicalConditionsViewController: UIViewController, UITableViewDelegate, UI
         case BrainTumor = "Brain Tumors"
         case Hypertension = "Hypertension"
         case Melanoma = "Melanoma"
+        case HeartDisease = "Heart Disease"
     }
+    
+    //MARK: Actions
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return medicalConditions.count
@@ -77,20 +83,42 @@ class MedicalConditionsViewController: UIViewController, UITableViewDelegate, UI
         medicalConditionCell.medicalConditionLabel.text = medicalConditions[indexPath.row].condition
         
         // Set background image of the medicalCondition cell checkbox to the checked image if 'checked' property is true
-        if medicalConditions[indexPath.row].checked {
-            let checkBoxFilledImage = UIImage(contentsOfFile: "checkBoxFILLED.png")
+        if medicalConditions[indexPath.row].checked == true {
+            let checkBoxFilledImage = UIImage(named: "checkBoxFILLED")
             medicalConditionCell.checkBox.setImage(checkBoxFilledImage, for: .normal)
         } else {
-            let checkBoxOutlineImage = UIImage(contentsOfFile: "checkBoxOUTLINE.png")
+            let checkBoxOutlineImage = UIImage(named: "checkBoxOUTLINE")
             medicalConditionCell.checkBox.setImage(checkBoxOutlineImage, for: .normal)
         }
         
         return medicalConditionCell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let medicalConditionCell = tableView.dequeueReusableCell(withIdentifier: "medicalConditionCell", for: indexPath) as! MedicalConditionCell
+        
+        // If an item is already checked and the user taps on it, set 'checked' property to false and change image to outline checkbox
+        if medicalConditions[indexPath.row].checked == true {
+            medicalConditions[indexPath.row].checked = false
+            let checkBoxOutlineImage = UIImage(named: "checkBoxOUTLINE")
+            medicalConditionCell.checkBox.setImage(checkBoxOutlineImage, for: .normal)
+        } else {
+            medicalConditions[indexPath.row].checked = true
+            let checkBoxFilledImage = UIImage(named: "checkBoxFILLED")
+            medicalConditionCell.checkBox.setImage(checkBoxFilledImage, for: .normal)
+        }
+        
+        self.medicalConditionsTable.reloadData()
+        
+    }
+    
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get medical conditions selected by the user
+        let selectedMedicalConditions = medicalConditions.filter {$0.checked == true}
+        let selectedMedicalConditionsString = selectedMedicalConditions.map {$0.condition}.joined(separator: ", ")
+        self.userInfo["medicalConditions"] = selectedMedicalConditionsString
         
         // Send user info to next view
         let getToKnowYouVC = segue.destination as! GetToKnowYouViewController
