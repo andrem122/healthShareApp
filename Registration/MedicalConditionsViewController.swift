@@ -64,8 +64,8 @@ class MedicalConditionsViewController: UIViewController, UITableViewDelegate, UI
     
     enum medicalConditionNames: String {
         case Achondroplasia = "Achondroplasia"
-        case AIDS = "Acquired Immune Deficiency Syndrome (AIDS)"
-        case ARDS = "Acute Respiratory Distress Syndrome (ARDS)"
+        case AIDS = "Acquired Immune Deficiency Syndrome"
+        case ARDS = "Acute Respiratory Distress Syndrome"
         case Arthritis = "Arthritis"
         case Alzheimer = "Alzheimer’s Disease"
         case BrainTumor = "Brain Tumors"
