@@ -857,41 +857,33 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medical Conditions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TIO-EA-iMx">
                                         <rect key="frame" x="0.0" y="0.0" width="334" height="31.333333333333332"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="31.329999999999998" id="Ggn-VH-zgI"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="26"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Have you had any of the following medical conditions (check all that apply)?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vEb-VD-al9">
-                                        <rect key="frame" x="0.0" y="52.333333333333343" width="334" height="40.666666666666657"/>
+                                        <rect key="frame" x="0.0" y="52.333333333333329" width="334" height="40.666666666666671"/>
                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button hidden="YES" opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IcK-Z2-gtN">
-                                        <rect key="frame" x="0.0" y="93" width="334" height="45"/>
-                                        <color key="backgroundColor" red="0.24193727970000001" green="0.89224034549999998" blue="0.5662739873" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="45" id="z3D-oE-PcW"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="19"/>
-                                        <state key="normal" title="Continue">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <color key="titleShadowColor" red="0.29411764709999999" green="0.46274509800000002" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="buttonTapped:" destination="Huz-k1-cPD" eventType="touchUpInside" id="cdF-HA-ZwN"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="TIO-EA-iMx" firstAttribute="top" secondItem="Bv1-5E-vIZ" secondAttribute="top" id="1Sl-5A-geh"/>
+                                    <constraint firstItem="vEb-VD-al9" firstAttribute="top" secondItem="TIO-EA-iMx" secondAttribute="bottom" constant="21" id="4iZ-30-Nua"/>
+                                </constraints>
                             </stackView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xhG-uc-3Mx">
-                                <rect key="frame" x="0.0" y="227" width="414" height="1000"/>
+                                <rect key="frame" x="0.0" y="241" width="414" height="700"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yIg-qP-h4j">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
+                                        <rect key="frame" x="0.0" y="50" width="414" height="600"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="1000" id="nAz-PG-k9c"/>
+                                            <constraint firstAttribute="height" constant="600" id="nAz-PG-k9c"/>
                                         </constraints>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="medicalConditionCell" rowHeight="50" id="NpI-YH-uTK" customClass="MedicalConditionCell" customModule="userLoginAndRegistration" customModuleProvider="target">
@@ -941,31 +933,46 @@
                                     </tableView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="yIg-qP-h4j" secondAttribute="bottom" id="0CN-gS-oDI"/>
-                                    <constraint firstItem="yIg-qP-h4j" firstAttribute="centerY" secondItem="xhG-uc-3Mx" secondAttribute="centerY" id="I4n-cT-xzc"/>
-                                    <constraint firstAttribute="height" constant="1000" id="SFm-i1-eGE"/>
-                                    <constraint firstAttribute="trailing" secondItem="yIg-qP-h4j" secondAttribute="trailing" id="XEA-Yj-bNO"/>
-                                    <constraint firstItem="yIg-qP-h4j" firstAttribute="centerX" secondItem="xhG-uc-3Mx" secondAttribute="centerX" id="Zq7-AR-BkJ"/>
-                                    <constraint firstItem="yIg-qP-h4j" firstAttribute="top" secondItem="xhG-uc-3Mx" secondAttribute="top" id="vFB-T1-tzh"/>
-                                    <constraint firstItem="yIg-qP-h4j" firstAttribute="leading" secondItem="xhG-uc-3Mx" secondAttribute="leading" id="ypW-Dd-tOh"/>
+                                    <constraint firstAttribute="bottom" secondItem="yIg-qP-h4j" secondAttribute="bottom" id="Ij5-HO-cg7"/>
+                                    <constraint firstItem="yIg-qP-h4j" firstAttribute="centerY" secondItem="xhG-uc-3Mx" secondAttribute="centerY" id="MMT-09-fwd"/>
+                                    <constraint firstAttribute="height" constant="700" placeholder="YES" id="SFm-i1-eGE"/>
+                                    <constraint firstItem="yIg-qP-h4j" firstAttribute="centerX" secondItem="xhG-uc-3Mx" secondAttribute="centerX" id="onK-oJ-4RM"/>
+                                    <constraint firstAttribute="trailing" secondItem="yIg-qP-h4j" secondAttribute="trailing" id="th5-1n-o6F"/>
+                                    <constraint firstItem="yIg-qP-h4j" firstAttribute="leading" secondItem="xhG-uc-3Mx" secondAttribute="leading" id="tr9-6n-TxU"/>
                                 </constraints>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xKF-qU-Mjf">
+                                <rect key="frame" x="30" y="1045" width="354" height="45"/>
+                                <color key="backgroundColor" red="0.45823714809999999" green="0.88053299780000005" blue="0.59298206730000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="Jjj-PR-87n"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="19"/>
+                                <state key="normal" title="Continue">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" red="0.29411764709999999" green="0.46274509800000002" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Bv1-5E-vIZ" firstAttribute="top" secondItem="YB8-sK-xUR" secondAttribute="top" constant="30" id="PQJ-0B-x4u"/>
+                            <constraint firstAttribute="bottom" secondItem="xhG-uc-3Mx" secondAttribute="bottom" constant="213" id="UUh-UR-m7b"/>
                             <constraint firstItem="xhG-uc-3Mx" firstAttribute="leading" secondItem="YB8-sK-xUR" secondAttribute="leading" id="YE7-LS-IXG"/>
+                            <constraint firstItem="YB8-sK-xUR" firstAttribute="trailing" secondItem="xKF-qU-Mjf" secondAttribute="trailing" constant="30" id="a9O-yr-EwH"/>
+                            <constraint firstItem="xKF-qU-Mjf" firstAttribute="leading" secondItem="YB8-sK-xUR" secondAttribute="leading" constant="30" id="bdF-gG-COc"/>
                             <constraint firstItem="Bv1-5E-vIZ" firstAttribute="leading" secondItem="YB8-sK-xUR" secondAttribute="leading" constant="40" id="dj7-kQ-GS2"/>
+                            <constraint firstItem="YB8-sK-xUR" firstAttribute="bottom" secondItem="xKF-qU-Mjf" secondAttribute="bottom" constant="30" id="e1j-x7-Y4B"/>
                             <constraint firstItem="yIg-qP-h4j" firstAttribute="width" secondItem="3bc-H7-xp5" secondAttribute="width" id="fQh-Xy-JFc"/>
                             <constraint firstItem="xhG-uc-3Mx" firstAttribute="trailing" secondItem="YB8-sK-xUR" secondAttribute="trailing" id="fTQ-6a-alt"/>
-                            <constraint firstItem="xhG-uc-3Mx" firstAttribute="top" secondItem="Bv1-5E-vIZ" secondAttribute="bottom" constant="16" id="oLo-xw-wVX"/>
                             <constraint firstItem="YB8-sK-xUR" firstAttribute="trailing" secondItem="Bv1-5E-vIZ" secondAttribute="trailing" constant="40" id="u9o-5c-Amr"/>
+                            <constraint firstItem="xhG-uc-3Mx" firstAttribute="top" secondItem="Bv1-5E-vIZ" secondAttribute="bottom" constant="30" id="ugf-7M-Fn9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YB8-sK-xUR"/>
                     </view>
                     <size key="freeformSize" width="414" height="1000"/>
                     <connections>
-                        <outlet property="continueButton" destination="IcK-Z2-gtN" id="oAC-9g-7Ai"/>
+                        <outlet property="continueButton" destination="xKF-qU-Mjf" id="xKz-Vw-NsR"/>
                         <outlet property="medicalConditionsTable" destination="yIg-qP-h4j" id="qeB-Bu-zYB"/>
                         <outlet property="questionLabel" destination="vEb-VD-al9" id="pWs-Qi-OZb"/>
                     </connections>

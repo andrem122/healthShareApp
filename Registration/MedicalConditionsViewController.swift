@@ -45,6 +45,7 @@ class MedicalConditionsViewController: UIViewController, UITableViewDelegate, UI
     @IBOutlet weak var medicalConditionsTable: UITableView!
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var continueButton: UIButton!
+    
     var userInfo = [String: String]()
     lazy var alert: Alert = Alert(currentViewController: self)
     let medicalConditions: [MedicalCondition] = [
