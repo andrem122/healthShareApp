@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "lock1x.png",
+      "filename" : "spam1x.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "lock2x.png",
+      "filename" : "spam2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "lock3x.png",
+      "filename" : "spam3x.png",
       "scale" : "3x"
     }
   ],

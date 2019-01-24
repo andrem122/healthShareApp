@@ -92,10 +92,10 @@ class MedicalConditionsViewController: UIViewController, UITableViewDelegate, UI
         
         // Set background image of the medicalCondition cell checkbox to the checked image if 'checked' property is true
         if medicalConditions[indexPath.row].checked == true {
-            let checkBoxFilledImage = UIImage(named: "checkBoxFILLED")
+            let checkBoxFilledImage = UIImage(named: "heartChecked")
             medicalConditionCell.checkBox.setImage(checkBoxFilledImage, for: .normal)
         } else {
-            let checkBoxOutlineImage = UIImage(named: "checkBoxOUTLINE")
+            let checkBoxOutlineImage = UIImage(named: "heartUnchecked")
             medicalConditionCell.checkBox.setImage(checkBoxOutlineImage, for: .normal)
         }
         
@@ -109,11 +109,11 @@ class MedicalConditionsViewController: UIViewController, UITableViewDelegate, UI
         // If an item is already checked and the user taps on it, set 'checked' property to false and change image to outline checkbox
         if medicalConditions[indexPath.row].checked == true {
             medicalConditions[indexPath.row].checked = false
-            let checkBoxOutlineImage = UIImage(named: "checkBoxOUTLINE")
+            let checkBoxOutlineImage = UIImage(named: "heartUnchecked")
             medicalConditionCell.checkBox.setImage(checkBoxOutlineImage, for: .normal)
         } else {
             medicalConditions[indexPath.row].checked = true
-            let checkBoxFilledImage = UIImage(named: "checkBoxFILLED")
+            let checkBoxFilledImage = UIImage(named: "heartChecked")
             medicalConditionCell.checkBox.setImage(checkBoxFilledImage, for: .normal)
         }
         
