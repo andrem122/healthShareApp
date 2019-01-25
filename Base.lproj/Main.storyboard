@@ -125,6 +125,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="continueButton" destination="pQX-Fw-G1Z" id="QgP-96-V2X"/>
+                        <outlet property="continueButtonBottomConstraint" destination="uEA-Fb-Uez" id="8H3-4Q-LVL"/>
                         <outlet property="emailInput" destination="aUq-Wg-6Ij" id="QSG-Lt-5uD"/>
                     </connections>
                 </viewController>

@@ -10,18 +10,13 @@ import UIKit
 
 class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        
-        // Pop up the keyboard for the first field when the view loads
-        self.emailInput.becomeFirstResponder()
-        
+    func setupButtons() {
         // Make 'continue' button round
         continueButton.layer.cornerRadius = 5
         continueButton.clipsToBounds = true
-        
+    }
+    
+    func setupNavigation() {
         // Remove border of navigation bar
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -31,6 +26,19 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
         
         // Set UIBarButton Item
         self.navigationItem.setLeftBarButton((UIBarButtonItem(image: UIImage(named:"cancel"), style: .plain, target: self, action: #selector(returnToLoginScreen(sender:)))), animated: false)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+        
+        // Pop up the keyboard for the first field when the view loads
+        self.emailInput.becomeFirstResponder()
+        setupButtons()
+        setupNavigation()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWasShown(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         
     }
     
@@ -40,6 +48,7 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
     var email: String = ""
     var userInfo = [String: String]()
     lazy var alert: Alert = Alert(currentViewController: self)
+    @IBOutlet weak var continueButtonBottomConstraint: NSLayoutConstraint!
     
     // MARK: Actions
     @IBAction func continueButtonTapped(_ sender: Any) {
@@ -113,12 +122,16 @@ extension RegisterEmailViewController {
         
     }
     
-    func keyboardWasShown(notification: NSNotification) {
+    @objc func keyboardWasShown(notification: NSNotification) {
+        print("Keyboard shown!")
         let info = notification.userInfo!
         let keyboardFrame: CGRect = (info[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         
-        UIView.animate(withDuration: 0.1, animations: { () -> Void in
-            self.continueButton.constraints
+        UIView.animate(withDuration: 0.1, animations: {
+            () -> Void in
+            print(self.continueButtonBottomConstraint.constant)
+            self.continueButtonBottomConstraint.constant = keyboardFrame.size.height + 20
+            print(self.continueButtonBottomConstraint.constant)
         })
     }
     
