@@ -113,4 +113,13 @@ extension RegisterEmailViewController {
         
     }
     
+    func keyboardWasShown(notification: NSNotification) {
+        let info = notification.userInfo!
+        let keyboardFrame: CGRect = (info[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        
+        UIView.animate(withDuration: 0.1, animations: { () -> Void in
+            self.continueButton.constraints
+        })
+    }
+    
 }
