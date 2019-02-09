@@ -78,8 +78,6 @@ class MedicalConditionsViewController: UIViewController, UITableViewDelegate, UI
         case Obesity = "Obesity"
     }
     
-    //MARK: Actions
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return medicalConditions.count

@@ -10,35 +10,24 @@ import UIKit
 
 class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
     
-    func setupButtons() {
-        // Make 'continue' button round
-        continueButton.layer.cornerRadius = 5
-        continueButton.clipsToBounds = true
-    }
-    
-    func setupNavigation() {
-        // Remove border of navigation bar
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Pop up the keyboard for the first field when the view loads
+        self.emailInput.becomeFirstResponder()
+        
+        let setup = Setup(viewController: self)
+        setup.setupButtons(buttonToSetup: self.continueButton)
+        setup.setupNavigation()
+        
+        // Set UIBarButton Item to cancel
+        self.navigationItem.setLeftBarButton((UIBarButtonItem(image: UIImage(named:"cancel"), style: .plain, target: self, action: #selector(returnToLoginScreen(sender:)))), animated: false)
         
         // Set the delegate for 'emailInput' UITextField to current instance of this class
         self.emailInput.delegate = self
         
-        // Set UIBarButton Item
-        self.navigationItem.setLeftBarButton((UIBarButtonItem(image: UIImage(named:"cancel"), style: .plain, target: self, action: #selector(returnToLoginScreen(sender:)))), animated: false)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        
-        // Pop up the keyboard for the first field when the view loads
-        self.emailInput.becomeFirstResponder()
-        setupButtons()
-        setupNavigation()
-        
+        // Detect when keyboard is shown and hidden
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWasShown(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillDisappear), name: UIResponder.keyboardWillHideNotification, object: nil)
         
     }
     
@@ -96,6 +85,8 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
         let registerPasswordVC = segue.destination as! RegisterPasswordViewController
         registerPasswordVC.userInfo = self.userInfo
         
+        NotificationCenter.default.removeObserver(self)
+        
     }
     
     // Returns the user the start screen after the cancel button is pressed
@@ -122,16 +113,22 @@ extension RegisterEmailViewController {
         
     }
     
+    // Move continue button up above the keyboard and back to it's original position when keyboard disappear
     @objc func keyboardWasShown(notification: NSNotification) {
-        print("Keyboard shown!")
         let info = notification.userInfo!
         let keyboardFrame: CGRect = (info[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         
         UIView.animate(withDuration: 0.1, animations: {
             () -> Void in
-            print(self.continueButtonBottomConstraint.constant)
             self.continueButtonBottomConstraint.constant = keyboardFrame.size.height + 20
-            print(self.continueButtonBottomConstraint.constant)
+        })
+    }
+    
+    @objc func keyboardWillDisappear() {
+        
+        UIView.animate(withDuration: 0.1, animations: {
+            () -> Void in
+            self.continueButtonBottomConstraint.constant = 30
         })
     }
     

@@ -13,17 +13,12 @@ class RegisterPhoneViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
-        
         // Pop up the keyboard for the first field when the view loads
         self.phoneNumberInput.becomeFirstResponder()
         
-        // Make 'continue' button round
-        continueButton.layer.cornerRadius = 5
-        continueButton.clipsToBounds = true
-        
-        // Edit back button text
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        let setup = Setup(viewController: self)
+        setup.setupButtons(buttonToSetup: self.continueButton)
+        setup.setupNavigation()
         
         for (key, value) in self.userInfo {
             print(key + ": " + value)

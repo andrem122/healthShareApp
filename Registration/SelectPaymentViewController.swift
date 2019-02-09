@@ -10,18 +10,11 @@ import UIKit
 
 class SelectPaymentViewController: UIViewController {
     
-    func setupNavigation() {
-        // Remove border of navigation bar
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        
-        // Edit back button text
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigation()
+        
+        let setup = Setup(viewController: self)
+        setup.setupNavigation()
         
         for (key, value) in self.userInfo {
             print(key + ": " + value)
