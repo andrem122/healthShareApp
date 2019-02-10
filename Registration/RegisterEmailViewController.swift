@@ -25,19 +25,32 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
         // Set the delegate for 'emailInput' UITextField to current instance of this class
         self.emailInput.delegate = self
         
-        // Detect when keyboard is shown and hidden
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWasShown(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillDisappear), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         
+        // Change the continue button's bottom constraint value back to its original value of 30 when the view is about to disappear
+        self.continueButtonBottomConstraint.constant = 30
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Add the keyboard notification back when the view will appear again
+        // Detect when keyboard is shown and hidden
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWasShown(notification:)), name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillDisappear), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     // MARK: Properties
     @IBOutlet weak var emailInput: UITextField!
     @IBOutlet weak var continueButton: UIButton!
-    var email: String = ""
-    var userInfo = [String: String]()
-    lazy var alert: Alert = Alert(currentViewController: self)
     @IBOutlet weak var continueButtonBottomConstraint: NSLayoutConstraint!
+    var userInfo = [String: String]()
+    var aboveKeyboardConstraint: CGFloat = CGFloat()
+    lazy var alert: Alert = Alert(currentViewController: self)
     
     // MARK: Actions
     @IBAction func continueButtonTapped(_ sender: Any) {
@@ -82,10 +95,9 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         // Send email text to RegisterPasswordViewController
-        let registerPasswordVC = segue.destination as! RegisterPasswordViewController
-        registerPasswordVC.userInfo = self.userInfo
-        
-        NotificationCenter.default.removeObserver(self)
+        let registerPasswordVC = segue.destination as? RegisterPasswordViewController
+        registerPasswordVC?.userInfo = self.userInfo
+        registerPasswordVC?.aboveKeyboardConstraint = self.aboveKeyboardConstraint
         
     }
     
@@ -115,16 +127,29 @@ extension RegisterEmailViewController {
     
     // Move continue button up above the keyboard and back to it's original position when keyboard disappear
     @objc func keyboardWasShown(notification: NSNotification) {
-        let info = notification.userInfo!
-        let keyboardFrame: CGRect = (info[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        
+        print("Keyboard shown")
+        
+        guard let info = notification.userInfo else {
+            return
+        }
+        
+        guard let keyboardSize = info[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {
+            return
+        }
+        
+        let keyboardFrame: CGRect = keyboardSize.cgRectValue
         
         UIView.animate(withDuration: 0.1, animations: {
             () -> Void in
             self.continueButtonBottomConstraint.constant = keyboardFrame.size.height + 20
+            self.aboveKeyboardConstraint = self.continueButtonBottomConstraint.constant
         })
     }
     
     @objc func keyboardWillDisappear() {
+        
+        print("Keyboard hidden")
         
         UIView.animate(withDuration: 0.1, animations: {
             () -> Void in

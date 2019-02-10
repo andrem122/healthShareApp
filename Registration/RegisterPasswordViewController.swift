@@ -20,16 +20,18 @@ class RegisterPasswordViewController: UIViewController, UITextFieldDelegate {
         setup.setupButtons(buttonToSetup: self.continueButton)
         setup.setupNavigation()
         
-        if let email = userInfo["email"] {
-            print(email)
-        }
-        
         // Set the delegate for 'passowrdInput' UITextField to current instance of this class
         self.passwordInput.delegate = self
         
-        // Detect when keyboard is shown and hidden
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWasShown(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillDisappear), name: UIResponder.keyboardWillHideNotification, object: nil)
+        if self.passwordInput.isFirstResponder {
+            print("password input is the first responder")
+            UIView.animate(withDuration: 0.1, animations: {
+                () -> Void in
+                self.continueButtonBottomConstraint.constant = self.aboveKeyboardConstraint
+            })
+        } else {
+            self.continueButtonBottomConstraint.constant = 30
+        }
         
     }
     
@@ -37,9 +39,10 @@ class RegisterPasswordViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordInput: UITextField!
     @IBOutlet weak var continueButton: UIButton!
     @IBOutlet weak var helpText: UILabel!
-    var userInfo = [String: String]()
-    lazy var alert: Alert = Alert(currentViewController: self)
     @IBOutlet weak var continueButtonBottomConstraint: NSLayoutConstraint!
+    var userInfo = [String: String]()
+    var aboveKeyboardConstraint: CGFloat = CGFloat()
+    lazy var alert: Alert = Alert(currentViewController: self)
     
     // MARK: Actions
     @IBAction func continueButtonTapped(_ sender: Any) {
@@ -105,26 +108,6 @@ extension RegisterPasswordViewController {
         self.continueButton.sendActions(for: .touchUpInside)
         return true
         
-    }
-    
-    // Move continue button up above the keyboard and back to it's original position when keyboard disappear
-    @objc func keyboardWasShown(notification: NSNotification) {
-        print("keyboard shown!")
-        let info = notification.userInfo!
-        let keyboardFrame: CGRect = (info[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-        
-        UIView.animate(withDuration: 0.1, animations: {
-            () -> Void in
-            self.continueButtonBottomConstraint.constant = keyboardFrame.size.height + 20
-        })
-    }
-    
-    @objc func keyboardWillDisappear() {
-        
-        UIView.animate(withDuration: 0.1, animations: {
-            () -> Void in
-            self.continueButtonBottomConstraint.constant = 30
-        })
     }
     
 }
