@@ -216,7 +216,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="rQI-dh-AIq">
-                                <rect key="frame" x="40" y="148" width="334" height="147.33333333333337"/>
+                                <rect key="frame" x="40" y="148" width="334" height="81.333333333333314"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date of Birth" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wBg-3X-c6x">
                                         <rect key="frame" x="0.0" y="0.0" width="334" height="31.333333333333332"/>
@@ -231,36 +231,39 @@
                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="24"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qLq-kE-uta">
-                                        <rect key="frame" x="0.0" y="102.33333333333334" width="334" height="45"/>
-                                        <color key="backgroundColor" red="0.45823714809999999" green="0.88053299780000005" blue="0.59298206730000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="45" id="lsB-AI-Gb2"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="19"/>
-                                        <state key="normal" title="Continue">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <color key="titleShadowColor" red="0.29411764709999999" green="0.46274509800000002" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="continueButtonTapped:" destination="di2-QD-7Ir" eventType="touchUpInside" id="TEg-rp-76I"/>
-                                            <segue destination="Be4-Pw-xCD" kind="show" identifier="validateIdentityView" id="AzA-Et-9rh"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                             </stackView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock" translatesAutoresizingMaskIntoConstraints="NO" id="el0-jK-gxQ">
                                 <rect key="frame" x="188" y="108" width="38" height="32"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qLq-kE-uta">
+                                <rect key="frame" x="30" y="787" width="354" height="45"/>
+                                <color key="backgroundColor" red="0.45823714809999999" green="0.88053299780000005" blue="0.59298206730000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="lsB-AI-Gb2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="19"/>
+                                <state key="normal" title="Continue">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" red="0.29411764709999999" green="0.46274509800000002" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="continueButtonTapped:" destination="di2-QD-7Ir" eventType="touchUpInside" id="TEg-rp-76I"/>
+                                    <segue destination="Be4-Pw-xCD" kind="show" identifier="validateIdentityView" id="AzA-Et-9rh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="rQI-dh-AIq" firstAttribute="top" secondItem="O0P-B1-CAZ" secondAttribute="top" constant="60" id="1iW-0N-5EB"/>
                             <constraint firstItem="el0-jK-gxQ" firstAttribute="top" secondItem="O0P-B1-CAZ" secondAttribute="top" constant="20" id="4SK-0a-5as"/>
                             <constraint firstItem="rQI-dh-AIq" firstAttribute="top" secondItem="el0-jK-gxQ" secondAttribute="bottom" constant="8" id="Dug-d5-y0L"/>
+                            <constraint firstItem="O0P-B1-CAZ" firstAttribute="trailing" secondItem="qLq-kE-uta" secondAttribute="trailing" constant="30" id="JHf-8N-CB9"/>
+                            <constraint firstItem="qLq-kE-uta" firstAttribute="leading" secondItem="O0P-B1-CAZ" secondAttribute="leading" constant="30" id="Lcy-KJ-n0S"/>
                             <constraint firstItem="el0-jK-gxQ" firstAttribute="leading" secondItem="O0P-B1-CAZ" secondAttribute="leading" constant="188" id="a5l-g3-LLC"/>
                             <constraint firstItem="O0P-B1-CAZ" firstAttribute="trailing" secondItem="rQI-dh-AIq" secondAttribute="trailing" constant="40" id="iPx-bn-JH1"/>
                             <constraint firstItem="rQI-dh-AIq" firstAttribute="leading" secondItem="O0P-B1-CAZ" secondAttribute="leading" constant="40" id="mUE-D8-h7g"/>
+                            <constraint firstItem="O0P-B1-CAZ" firstAttribute="bottom" secondItem="qLq-kE-uta" secondAttribute="bottom" constant="30" id="r3N-dZ-1Bf"/>
                             <constraint firstItem="O0P-B1-CAZ" firstAttribute="trailing" secondItem="el0-jK-gxQ" secondAttribute="trailing" constant="188" id="wnd-dF-yXx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O0P-B1-CAZ"/>
@@ -268,6 +271,7 @@
                     <connections>
                         <outlet property="DOBInput" destination="42d-lI-Y3H" id="4ew-6U-BCM"/>
                         <outlet property="continueButton" destination="qLq-kE-uta" id="xpg-I4-Of3"/>
+                        <outlet property="continueButtonBottomConstraint" destination="r3N-dZ-1Bf" id="Iac-eo-Cuz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W0c-mN-Sbn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -304,7 +308,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="UgX-az-Xku">
-                                <rect key="frame" x="40" y="118.00000000000001" width="334" height="197.33333333333337"/>
+                                <rect key="frame" x="40" y="118.00000000000001" width="334" height="131.33333333333337"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is your legal name?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m84-fw-PFw">
                                         <rect key="frame" x="0.0" y="0.0" width="334" height="31.333333333333332"/>
@@ -326,35 +330,39 @@
                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="24"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gew-oZ-KZE">
-                                        <rect key="frame" x="0.0" y="152.33333333333331" width="334" height="45"/>
-                                        <color key="backgroundColor" red="0.45823714809999999" green="0.88053299780000005" blue="0.59298206730000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="45" id="M3C-aN-Mll"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="19"/>
-                                        <state key="normal" title="Continue">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <color key="titleShadowColor" red="0.29411764709999999" green="0.46274509800000002" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="continueButtonTapped:" destination="uEI-t5-Gig" eventType="touchUpInside" id="ydL-oe-AhV"/>
-                                            <segue destination="dQp-c8-JOO" kind="show" identifier="registerPhoneView" id="7cW-de-YWj"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gew-oZ-KZE">
+                                <rect key="frame" x="30" y="787" width="354" height="45"/>
+                                <color key="backgroundColor" red="0.45823714809999999" green="0.88053299780000005" blue="0.59298206730000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="M3C-aN-Mll"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="19"/>
+                                <state key="normal" title="Continue">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" red="0.29411764709999999" green="0.46274509800000002" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="continueButtonTapped:" destination="uEI-t5-Gig" eventType="touchUpInside" id="ydL-oe-AhV"/>
+                                    <segue destination="dQp-c8-JOO" kind="show" identifier="registerPhoneView" id="7cW-de-YWj"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ZX7-EW-976" firstAttribute="trailing" secondItem="UgX-az-Xku" secondAttribute="trailing" constant="40" id="3U2-3y-ti3"/>
+                            <constraint firstItem="gew-oZ-KZE" firstAttribute="leading" secondItem="ZX7-EW-976" secondAttribute="leading" constant="30" id="7sD-Qc-aiW"/>
+                            <constraint firstItem="ZX7-EW-976" firstAttribute="bottom" secondItem="gew-oZ-KZE" secondAttribute="bottom" constant="30" id="Pb6-vV-IjR"/>
                             <constraint firstItem="UgX-az-Xku" firstAttribute="top" secondItem="ZX7-EW-976" secondAttribute="top" constant="30" id="dKG-nJ-1WW"/>
+                            <constraint firstItem="ZX7-EW-976" firstAttribute="trailing" secondItem="gew-oZ-KZE" secondAttribute="trailing" constant="30" id="gPq-ug-Vru"/>
                             <constraint firstItem="UgX-az-Xku" firstAttribute="leading" secondItem="ZX7-EW-976" secondAttribute="leading" constant="40" id="qdY-Uv-feQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZX7-EW-976"/>
                     </view>
                     <connections>
                         <outlet property="continueButton" destination="gew-oZ-KZE" id="NMo-Y2-I7i"/>
+                        <outlet property="continueButtonBottomConstraint" destination="Pb6-vV-IjR" id="28v-4y-U18"/>
                         <outlet property="firstNameInput" destination="9Pz-fE-StC" id="hWs-sS-F0M"/>
                         <outlet property="lastNameInput" destination="Qbh-0U-5pn" id="A3U-Mj-52y"/>
                     </connections>
@@ -372,7 +380,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="gcf-fg-kzX">
-                                <rect key="frame" x="40" y="118.00000000000001" width="334" height="147.33333333333337"/>
+                                <rect key="frame" x="40" y="118" width="334" height="81.333333333333314"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is your phone number?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HB1-vJ-Nyg">
                                         <rect key="frame" x="0.0" y="0.0" width="334" height="31.333333333333332"/>
@@ -387,35 +395,39 @@
                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="24"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7g6-nE-S2G">
-                                        <rect key="frame" x="0.0" y="102.33333333333334" width="334" height="45"/>
-                                        <color key="backgroundColor" red="0.45823714809999999" green="0.88053299780000005" blue="0.59298206730000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="45" id="RN9-bf-EfF"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="19"/>
-                                        <state key="normal" title="Continue">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <color key="titleShadowColor" red="0.29411764709999999" green="0.46274509800000002" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="continueButtonTapped:" destination="dQp-c8-JOO" eventType="touchUpInside" id="fsQ-c9-H4q"/>
-                                            <segue destination="di2-QD-7Ir" kind="show" identifier="registerDOBView" id="TSy-rR-bHk"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7g6-nE-S2G">
+                                <rect key="frame" x="30" y="787" width="354" height="45"/>
+                                <color key="backgroundColor" red="0.45823714809999999" green="0.88053299780000005" blue="0.59298206730000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="RN9-bf-EfF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="19"/>
+                                <state key="normal" title="Continue">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" red="0.29411764709999999" green="0.46274509800000002" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="continueButtonTapped:" destination="dQp-c8-JOO" eventType="touchUpInside" id="fsQ-c9-H4q"/>
+                                    <segue destination="di2-QD-7Ir" kind="show" identifier="registerDOBView" id="TSy-rR-bHk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="gcf-fg-kzX" firstAttribute="leading" secondItem="fMZ-1A-bmT" secondAttribute="leading" constant="40" id="1TL-UY-TCq"/>
+                            <constraint firstItem="7g6-nE-S2G" firstAttribute="leading" secondItem="fMZ-1A-bmT" secondAttribute="leading" constant="30" id="RF8-eb-I4n"/>
                             <constraint firstItem="gcf-fg-kzX" firstAttribute="top" secondItem="fMZ-1A-bmT" secondAttribute="top" constant="30" id="avu-f4-RTs"/>
                             <constraint firstItem="fMZ-1A-bmT" firstAttribute="trailing" secondItem="gcf-fg-kzX" secondAttribute="trailing" constant="40" id="cGI-sv-m0Z"/>
+                            <constraint firstItem="fMZ-1A-bmT" firstAttribute="bottom" secondItem="7g6-nE-S2G" secondAttribute="bottom" constant="30" id="cpA-wX-dQh"/>
+                            <constraint firstItem="fMZ-1A-bmT" firstAttribute="trailing" secondItem="7g6-nE-S2G" secondAttribute="trailing" constant="30" id="upZ-gW-POE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fMZ-1A-bmT"/>
                     </view>
                     <connections>
                         <outlet property="continueButton" destination="7g6-nE-S2G" id="vzr-3O-UHz"/>
+                        <outlet property="continueButtonBottomConstraint" destination="cpA-wX-dQh" id="On7-9U-ylO"/>
                         <outlet property="phoneNumberInput" destination="qKr-fV-9kY" id="eA4-BK-HIY"/>
                     </connections>
                 </viewController>

@@ -100,6 +100,19 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
         registerPasswordVC?.aboveKeyboardConstraint = self.aboveKeyboardConstraint
         
     }
+
+}
+
+extension RegisterEmailViewController {
+    
+    // When return key (done key in our case) is pressed, this function is called
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        // Send touch event to the continue button so that our data validation logic can be used
+        self.continueButton.sendActions(for: .touchUpInside)
+        return true
+        
+    }
     
     // Returns the user the start screen after the cancel button is pressed
     @objc func returnToLoginScreen(sender: AnyObject) {
@@ -110,18 +123,6 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
             self.present(startViewController, animated: true, completion: nil)
             
         }
-        
-    }
-
-}
-extension RegisterEmailViewController {
-    
-    // When return key (done key in our case) is pressed, this function is called
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
-        // Send touch event to the continue button so that our data validation logic can be used
-        self.continueButton.sendActions(for: .touchUpInside)
-        return true
         
     }
     

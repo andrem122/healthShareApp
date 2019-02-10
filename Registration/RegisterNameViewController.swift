@@ -22,21 +22,38 @@ class RegisterNameViewController: UIViewController, UITextFieldDelegate {
         setup.setupButtons(buttonToSetup: self.continueButton)
         setup.setupNavigation()
         
-        for (key, value) in self.userInfo {
-            print(key + ": " + value)
-        }
+        // Set bottom constraint of continue button to the 'aboveKeyboardConstraint'
+        self.continueButtonBottomConstraint.constant = self.aboveKeyboardConstraint
         
         // Delegates
         self.firstNameInput.delegate = self
         self.lastNameInput.delegate = self
         
+        for (key, value) in self.userInfo {
+            print(key + ": " + value)
+        }
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWasShown(notification:)), name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillDisappear), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.continueButtonBottomConstraint.constant = 30
+        NotificationCenter.default.removeObserver(self)
     }
     
     // MARK: Properties
     @IBOutlet weak var firstNameInput: UITextField!
     @IBOutlet weak var lastNameInput: UITextField!
     @IBOutlet weak var continueButton: UIButton!
+    @IBOutlet weak var continueButtonBottomConstraint: NSLayoutConstraint!
     var userInfo: [String: String] = [:]
+    var aboveKeyboardConstraint: CGFloat = CGFloat()
     lazy var alert: Alert = Alert(currentViewController: self)
     
     // MARK: Actions
@@ -80,8 +97,9 @@ class RegisterNameViewController: UIViewController, UITextFieldDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         // Send user info to RegisterPhoneViewController
-        let registerPhoneVC = segue.destination as! RegisterPhoneViewController
-        registerPhoneVC.userInfo = self.userInfo
+        let registerPhoneVC = segue.destination as? RegisterPhoneViewController
+        registerPhoneVC?.userInfo = self.userInfo
+        registerPhoneVC?.aboveKeyboardConstraint = self.aboveKeyboardConstraint
         
     }
     
@@ -106,6 +124,37 @@ extension RegisterNameViewController {
         
         return true
         
+    }
+    
+    @objc func keyboardWasShown(notification: NSNotification) {
+        
+        print("Keyboard shown from name view")
+        
+        guard let info = notification.userInfo else {
+            return
+        }
+        
+        guard let keyboardSize = info[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {
+            return
+        }
+        
+        let keyboardFrame: CGRect = keyboardSize.cgRectValue
+        
+        UIView.animate(withDuration: 0.1, animations: {
+            () -> Void in
+            self.continueButtonBottomConstraint.constant = keyboardFrame.size.height + 20
+            self.aboveKeyboardConstraint = self.continueButtonBottomConstraint.constant
+        })
+    }
+    
+    @objc func keyboardWillDisappear() {
+        
+        print("Keyboard hidden from name view")
+        
+        UIView.animate(withDuration: 0.1, animations: {
+            () -> Void in
+            self.continueButtonBottomConstraint.constant = 30
+        })
     }
     
 }
