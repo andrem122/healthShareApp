@@ -99,7 +99,6 @@ class RegisterNameViewController: UIViewController, UITextFieldDelegate {
         // Send user info to RegisterPhoneViewController
         let registerPhoneVC = segue.destination as? RegisterPhoneViewController
         registerPhoneVC?.userInfo = self.userInfo
-        registerPhoneVC?.aboveKeyboardConstraint = self.aboveKeyboardConstraint
         
     }
     

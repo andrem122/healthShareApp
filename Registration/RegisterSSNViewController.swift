@@ -22,6 +22,9 @@ class RegisterSSNViewController: UIViewController, UITextFieldDelegate {
         setup.setupButtons(buttonToSetup: self.continueButton)
         setup.setupNavigation()
         
+        // Set bottom constraint of continue button to the 'aboveKeyboardConstraint'
+        self.continueButtonBottomConstraint.constant = self.aboveKeyboardConstraint
+        
         // Set the delegate for 'emailInput' UITextField to current instance of this class
         self.socialSecurityInput.delegate = self
         
@@ -33,9 +36,23 @@ class RegisterSSNViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWasShown(notification:)), name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillDisappear), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.continueButtonBottomConstraint.constant = 30
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     // MARK: Properties
     @IBOutlet weak var socialSecurityInput: UITextField!
     @IBOutlet weak var continueButton: UIButton!
+    @IBOutlet weak var continueButtonBottomConstraint: NSLayoutConstraint!
+    var aboveKeyboardConstraint: CGFloat = CGFloat()
     var userInfo: [String: String] = [:]
     lazy var alert: Alert = Alert(currentViewController: self)
     
@@ -83,8 +100,8 @@ class RegisterSSNViewController: UIViewController, UITextFieldDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         // Send user info to next view
-        let registerAddressVC = segue.destination as! RegisterAddressViewController
-        registerAddressVC.userInfo = self.userInfo
+        let registerAddressVC = segue.destination as? RegisterAddressViewController
+        registerAddressVC?.userInfo = self.userInfo
         
     }
     
@@ -125,6 +142,37 @@ extension RegisterSSNViewController {
         self.continueButton.sendActions(for: .touchUpInside)
         return true
         
+    }
+    
+    @objc func keyboardWasShown(notification: NSNotification) {
+        
+        print("Keyboard shown from name view")
+        
+        guard let info = notification.userInfo else {
+            return
+        }
+        
+        guard let keyboardSize = info[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {
+            return
+        }
+        
+        let keyboardFrame: CGRect = keyboardSize.cgRectValue
+        
+        UIView.animate(withDuration: 0.1, animations: {
+            () -> Void in
+            self.continueButtonBottomConstraint.constant = keyboardFrame.size.height + 20
+            self.aboveKeyboardConstraint = self.continueButtonBottomConstraint.constant
+        })
+    }
+    
+    @objc func keyboardWillDisappear() {
+        
+        print("Keyboard hidden from name view")
+        
+        UIView.animate(withDuration: 0.1, animations: {
+            () -> Void in
+            self.continueButtonBottomConstraint.constant = 30
+        })
     }
     
 }

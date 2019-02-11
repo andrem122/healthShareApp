@@ -20,9 +20,6 @@ class RegisterPhoneViewController: UIViewController, UITextFieldDelegate {
         setup.setupButtons(buttonToSetup: self.continueButton)
         setup.setupNavigation()
         
-        // Set bottom constraint of continue button to the 'aboveKeyboardConstraint'
-        self.continueButtonBottomConstraint.constant = self.aboveKeyboardConstraint
-        
         // Set the delegate for the phoneNumberInput UITextField to current instance of this class
         self.phoneNumberInput.delegate = self
         

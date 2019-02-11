@@ -25,14 +25,16 @@ class ValidateIdentityViewController: UIViewController {
     
     // MARK: Properties
     @IBOutlet weak var continueButton: UIButton!
+    var aboveKeyboardConstraint: CGFloat = CGFloat()
     var userInfo: [String: String] = [:]
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         // Send user info to next view
-        let registerSocialSecurityVC = segue.destination as! RegisterSSNViewController
-        registerSocialSecurityVC.userInfo = self.userInfo
+        let registerSocialSecurityVC = segue.destination as? RegisterSSNViewController
+        registerSocialSecurityVC?.userInfo = self.userInfo
+        registerSocialSecurityVC?.aboveKeyboardConstraint = self.aboveKeyboardConstraint
         
     }
     

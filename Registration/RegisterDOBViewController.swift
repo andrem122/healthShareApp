@@ -187,8 +187,9 @@ class RegisterDOBViewController: UIViewController, UITextFieldDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         // Send user info to next view
-        let validateIdentityVC = segue.destination as! ValidateIdentityViewController
-        validateIdentityVC.userInfo = self.userInfo
+        let validateIdentityVC = segue.destination as? ValidateIdentityViewController
+        validateIdentityVC?.userInfo = self.userInfo
+        validateIdentityVC?.aboveKeyboardConstraint = self.aboveKeyboardConstraint
         
     }
     

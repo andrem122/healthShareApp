@@ -5,4 +5,5 @@ target 'userLoginAndRegistration' do
   pod 'GooglePlaces'
   pod 'GooglePlacePicker'
   pod 'GoogleMaps'
+  pod 'Stripe'
 end
