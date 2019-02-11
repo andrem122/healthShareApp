@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         GMSPlacesClient.provideAPIKey("AIzaSyDkF-HC7aowag9spi-a046EGsTeingYRNk")
         GMSServices.provideAPIKey("AIzaSyDkF-HC7aowag9spi-a046EGsTeingYRNk")
+        STPPaymentConfiguration.shared().publishableKey = "pk_test_3DsNT7ZQbdIpO2RY2TDyWoxN"
         return true
     }
 

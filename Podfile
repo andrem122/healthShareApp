@@ -6,4 +6,5 @@ target 'userLoginAndRegistration' do
   pod 'GooglePlacePicker'
   pod 'GoogleMaps'
   pod 'Stripe'
+  pod 'AFNetworking', '~> 3.0'
 end
