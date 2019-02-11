@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class MedicalConditionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -49,21 +50,21 @@ class MedicalConditionsViewController: UIViewController, UITableViewDelegate, UI
     var userInfo = [String: String]()
     lazy var alert: Alert = Alert(currentViewController: self)
     let medicalConditions: [MedicalCondition] = [
-        MedicalCondition(condition: medicalConditionNames.Achondroplasia.rawValue),
-        MedicalCondition(condition: medicalConditionNames.AIDS.rawValue),
-        MedicalCondition(condition: medicalConditionNames.ARDS.rawValue),
-        MedicalCondition(condition: medicalConditionNames.Arthritis.rawValue),
-        MedicalCondition(condition: medicalConditionNames.Alzheimer.rawValue),
-        MedicalCondition(condition: medicalConditionNames.BrainTumor.rawValue),
-        MedicalCondition(condition: medicalConditionNames.Cancer.rawValue),
-        MedicalCondition(condition: medicalConditionNames.Diabetes.rawValue),
-        MedicalCondition(condition: medicalConditionNames.HeartDisease.rawValue),
-        MedicalCondition(condition: medicalConditionNames.Hypertension.rawValue),
-        MedicalCondition(condition: medicalConditionNames.Melanoma.rawValue),
-        MedicalCondition(condition: medicalConditionNames.Obesity.rawValue),
+        MedicalCondition(condition: MedicalConditionNames.Achondroplasia.rawValue),
+        MedicalCondition(condition: MedicalConditionNames.AIDS.rawValue),
+        MedicalCondition(condition: MedicalConditionNames.ARDS.rawValue),
+        MedicalCondition(condition: MedicalConditionNames.Arthritis.rawValue),
+        MedicalCondition(condition: MedicalConditionNames.Alzheimer.rawValue),
+        MedicalCondition(condition: MedicalConditionNames.BrainTumor.rawValue),
+        MedicalCondition(condition: MedicalConditionNames.Cancer.rawValue),
+        MedicalCondition(condition: MedicalConditionNames.Diabetes.rawValue),
+        MedicalCondition(condition: MedicalConditionNames.HeartDisease.rawValue),
+        MedicalCondition(condition: MedicalConditionNames.Hypertension.rawValue),
+        MedicalCondition(condition: MedicalConditionNames.Melanoma.rawValue),
+        MedicalCondition(condition: MedicalConditionNames.Obesity.rawValue),
     ]
     
-    enum medicalConditionNames: String {
+    enum MedicalConditionNames: String {
         case Achondroplasia = "Achondroplasia"
         case AIDS = "Acquired Immune Deficiency Syndrome"
         case ARDS = "Acute Respiratory Distress Syndrome"
@@ -129,8 +130,15 @@ class MedicalConditionsViewController: UIViewController, UITableViewDelegate, UI
         self.userInfo["medicalConditions"] = selectedMedicalConditionsString
         
         // Send user info to next view
-        let selectPaymentTypeVC = segue.destination as! GetToKnowYouViewController
-        selectPaymentTypeVC.userInfo = self.userInfo
+        let selectPaymentTypeVC = segue.destination as? SelectPaymentViewController
+        selectPaymentTypeVC?.userInfo = self.userInfo
+        
+        // Send data to database
+        let url: URL = URL(string: "http://burnedoutmd.com/health-share-app/register.php")!
+        AF.request(url, method: .post, parameters: self.userInfo).responseString {
+            response in
+            print(response)
+        }
         
     }
     

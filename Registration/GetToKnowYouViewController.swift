@@ -31,8 +31,8 @@ class GetToKnowYouViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         // Send user info to next view
-        let drugUseVC = segue.destination as! DrugUseViewController
-        drugUseVC.userInfo = self.userInfo
+        let drugUseVC = segue.destination as? DrugUseViewController
+        drugUseVC?.userInfo = self.userInfo
         
     }
     

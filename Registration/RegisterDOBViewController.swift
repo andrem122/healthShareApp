@@ -87,47 +87,7 @@ class RegisterDOBViewController: UIViewController, UITextFieldDelegate {
             // Add info to 'userInfo' dictionary
             self.userInfo["dateOfBirth"] = dateOfBirth
             self.userInfo["age"] = ageString
-            
-            // Store data in database
-            /*let url: URL = URL(string: "http://burnedoutmd.com/health-share-app/register.php")!
-            
-            var request: URLRequest = URLRequest(url: url)
-            request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-            request.httpMethod = "POST"
-            
-            let postString: String = "firstName=\(userInfo["firstName"] ?? "Andre")"
-            request.httpBody = postString.data(using: .utf8)
-            
-            let task = URLSession.shared.dataTask(with: request) {
-                
-                data, response, error in
-                
-                // Check for fundamental network errors
-                guard let data = data, error == nil else {
-                    
-                    print("Error: \(error!)")
-                    return
-                    
-                }
-                
-                // Check for HTTP errors
-                if let httpStatus = response as? HTTPURLResponse, let response = response, httpStatus.statusCode != 200 {
-                    
-                    print("HTTP status code is \(httpStatus.statusCode)")
-                    print("Response: \(response)")
-                    
-                }
-                
-                if let responseString = String(data: data, encoding: .utf8) {
-                    
-                    print("Response: \(responseString)")
-                    
-                }
-                
-            }
-            
-            task.resume()
-            */
+        
         }
         
     }
