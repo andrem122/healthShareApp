@@ -7,4 +7,5 @@ target 'userLoginAndRegistration' do
   pod 'GooglePlacePicker'
   pod 'GoogleMaps'
   pod 'Stripe'
+  pod 'Alamofire', '~> 5.0.0-beta.2'
 end
