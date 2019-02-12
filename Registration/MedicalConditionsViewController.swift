@@ -11,32 +11,15 @@ import Alamofire
 
 class MedicalConditionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    func setupButtons() {
-        
-        // Make buttons round
-        self.continueButton.layer.cornerRadius = 5
-        self.continueButton.clipsToBounds = true
-        
-    }
-    
-    func setupNavigation() {
-        
-        // Remove border of navigation bar
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        
-        // Edit back button text
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupButtons()
-        setupNavigation()
+
+        let setup = Setup(viewController: self)
+        setup.setupButtons(buttonToSetup: self.continueButton)
+        setup.setupNavigation()
         
         // Print user info
-        for (value, key) in self.userInfo {
+        for (key, value) in self.userInfo {
             print(key + ": " + value)
         }
         
@@ -132,6 +115,11 @@ class MedicalConditionsViewController: UIViewController, UITableViewDelegate, UI
         // Send user info to next view
         let selectPaymentTypeVC = segue.destination as? SelectPaymentViewController
         selectPaymentTypeVC?.userInfo = self.userInfo
+        
+        // Add PHP authentication credentials to userInfo dictionary
+        let phpAuthenticationCredentials = PHPAuthenticationCredentials()
+        self.userInfo["PHPAuthenticationUsername"] = phpAuthenticationCredentials.username
+        self.userInfo["PHPAuthenticationPassword"] = phpAuthenticationCredentials.password
         
         // Send data to database
         let url: URL = URL(string: "http://burnedoutmd.com/health-share-app/register.php")!
