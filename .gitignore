@@ -1,8 +1,8 @@
 # Xcode
+PHPAuthenticationCredentials.swift
 ## Build generated
 build/
 DerivedData/ 
 ## Various settings
 *.pbxuser
 xcuserdata/
-PHPAuthenticationCredentials.swift
