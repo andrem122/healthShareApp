@@ -19,9 +19,9 @@ class Customer {
     var socialSecurityNumber: String
     var address: String
     var usesDrugs: Bool
-    var medicalConditions: String
+    var medicalConditions: [String]
     var planType: PlanType
-    var dateJoined: DateComponents
+    var dateJoined: Date
     
     var age: Int {
         get {
@@ -39,7 +39,7 @@ class Customer {
         }
     }
     
-    init(id: Int, firstName: String, lastName: String, email: String, primaryPhone: String, dateOfBirth: DateComponents, socialSecurityNumber: String, address: String, usesDrugs: Bool, medicalConditions: String, planType: PlanType, dateJoined: DateComponents) {
+    init(id: Int, firstName: String, lastName: String, email: String, primaryPhone: String, dateOfBirth: DateComponents, socialSecurityNumber: String, address: String, usesDrugs: Bool, medicalConditions: [String], planType: PlanType, dateJoined: String) {
         self.id = id
         self.firstName = firstName
         self.lastName = lastName
@@ -51,7 +51,7 @@ class Customer {
         self.usesDrugs = usesDrugs
         self.medicalConditions = medicalConditions
         self.planType = planType
-        self.dateJoined = dateJoined
+        self.dateJoined = Customer.convertDateString(dateString: dateJoined)
     }
     
     // Plan prices based on plan type
@@ -59,6 +59,23 @@ class Customer {
         case Gold = 100
         case Silver = 75
         case Bronze = 50
+    }
+    
+    static func convertDateString(dateString: String) -> Date {
+        // Date string must be in the form of "yyyy-MM-dd HH:mm:ss"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
+        let date = dateFormatter.date(from: dateString)!
+        
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.year, .month, .day, .hour], from: date)
+        guard let finalDate = calendar.date(from: components) else {
+            return Date()
+        }
+        
+        return finalDate
+        
     }
     
 }

@@ -112,14 +112,14 @@ class MedicalConditionsViewController: UIViewController, UITableViewDelegate, UI
         let selectedMedicalConditionsString = selectedMedicalConditions.map {$0.condition}.joined(separator: ", ")
         self.userInfo["medicalConditions"] = selectedMedicalConditionsString
         
-        // Send user info to next view
-        let selectPaymentTypeVC = segue.destination as? SelectPaymentViewController
-        selectPaymentTypeVC?.userInfo = self.userInfo
-        
         // Add PHP authentication credentials to userInfo dictionary
         let phpAuthenticationCredentials = PHPAuthenticationCredentials()
         self.userInfo["PHPAuthenticationUsername"] = phpAuthenticationCredentials.username
         self.userInfo["PHPAuthenticationPassword"] = phpAuthenticationCredentials.password
+        
+        // Send user info to next view
+        let selectPaymentTypeVC = segue.destination as? SelectPaymentViewController
+        selectPaymentTypeVC?.userInfo = self.userInfo
         
         // Send data to database
         let url: URL = URL(string: "http://burnedoutmd.com/health-share-app/register.php")!

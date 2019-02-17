@@ -11,6 +11,7 @@ PODS:
   - GooglePlaces (2.7.0):
     - GoogleMaps/Base (= 2.7.0)
   - Stripe (14.0.0)
+  - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
   - Alamofire (~> 5.0.0-beta.2)
@@ -18,6 +19,7 @@ DEPENDENCIES:
   - GooglePlacePicker
   - GooglePlaces
   - Stripe
+  - SwiftyJSON (~> 4.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -26,6 +28,7 @@ SPEC REPOS:
     - GooglePlacePicker
     - GooglePlaces
     - Stripe
+    - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: d1e5493588babe3e7b56ae29e8032942f4de09fe
@@ -33,7 +36,8 @@ SPEC CHECKSUMS:
   GooglePlacePicker: 59ea44db173c58486ad6123993e81feefcbce9c3
   GooglePlaces: 3d06e6c99654545b4738ce49648745779c25f2ef
   Stripe: db29ad197c74aca6fb981e4e8355cf7ebd0fca5a
+  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: b92dd1c8bc920238c151842428f7432c02737e77
+PODFILE CHECKSUM: 2ead2d1fdb4aed0a44d79805fdc581a2d4973efb
 
 COCOAPODS: 1.6.0
