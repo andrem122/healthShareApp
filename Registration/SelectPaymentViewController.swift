@@ -1,5 +1,5 @@
 //
-//  ValidateIdentityViewController.swift
+//  SelectPaymentViewController.swift
 //  userLoginAndRegistration
 //
 //  Created by Andre Mashraghi on 12/8/18.
@@ -26,6 +26,7 @@ class SelectPaymentViewController: UIViewController {
         loginInfo["PHPAuthenticationUsername"] = self.userInfo["PHPAuthenticationUsername"]
         loginInfo["PHPAuthenticationPassword"] = self.userInfo["PHPAuthenticationPassword"]
         
+        // Send POST request to server after waiting 2 seconds
         Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: {
             timer in
             // Get data from database

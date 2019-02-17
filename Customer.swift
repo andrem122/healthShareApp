@@ -70,6 +70,7 @@ class Customer {
         
         let calendar = Calendar.current
         let components = calendar.dateComponents([.year, .month, .day, .hour], from: date)
+        
         guard let finalDate = calendar.date(from: components) else {
             return Date()
         }
