@@ -14,6 +14,8 @@ class SelectPlanViewController: UIPageViewController, UIPageViewControllerDelega
         super.viewDidLoad()
         self.dataSource = self
         self.delegate = self
+        
+        self.configurePageControl()
     
         if let firstViewController = orderedViewControllers.first {
             self.setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
